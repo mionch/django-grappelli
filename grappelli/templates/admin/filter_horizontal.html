@@ -1,0 +1,9 @@
+{% load i18n %}
+<div class="g-d-8">
+	<div class="grp-margin-vertical-s">
+		<label>{% blocktrans with title|capfirst as filter_title %}{{ filter_title }}{% endblocktrans %}</label>
+		<select class="grp-filter-choice">
+			{% for choice in choices %}<option value="{{ choice.query_string|iriencode }}"{% if choice.selected %} selected='selected'{% endif %}>{{ choice.display }}</option>{% endfor %}
+		</select>
+	</div>
+</div>

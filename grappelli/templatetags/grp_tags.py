@@ -217,6 +217,12 @@ def admin_list_filter(cl, spec):
     }))
 
 
+# HAX FIX in some cases the base name of the tag was overriden by other packages
+@register.simple_tag
+def admin_list_filter_custom(cl, spec):
+    return admin_list_filter(cl, spec)
+
+
 @register.simple_tag(takes_context=True)
 def switch_user_dropdown(context):
     if SWITCH_USER:
