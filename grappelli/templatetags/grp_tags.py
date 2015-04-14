@@ -235,7 +235,8 @@ def extended_result_headers(cl):
     ordering_field_columns = cl.get_ordering_field_columns()
     for i, field_name in enumerate(cl.list_display):
         text, attr = label_for_field(field_name, cl.model, model_admin=cl.model_admin, return_attr=True)
-        shortened_name = cl.model_admin.list_shortened_labels.get(field_name, None)
+        shortened_name = cl.model_admin.list_shortened_labels.get(field_name, None) if \
+            hasattr(cl.model_admin, 'list_shortened_labels') else ''
         tooltip = text if shortened_name else ''
         if shortened_name:
             text = shortened_name
